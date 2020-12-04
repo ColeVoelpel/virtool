@@ -182,80 +182,83 @@ export class CreateSample extends React.Component {
         const subtractionId = this.state.subtractionId || get(this.props.subtractions, [0, "id"]);
 
         return (
-            <Modal
-                label="Create Sample"
-                show={this.props.show}
-                size="lg"
-                onEnter={this.props.onLoadSubtractionsAndFiles}
-                onExited={this.handleModalExited}
-                onHide={this.props.onHide}
-            >
-                <ModalHeader>Create Sample</ModalHeader>
-                <form onSubmit={this.handleSubmit}>
-                    <ModalBody>
-                        <CreateSampleFields>
-                            <InputGroup>
-                                <InputLabel>Sample Name</InputLabel>
-                                <InputContainer align="right">
-                                    <Input
-                                        error={errorName}
-                                        name="name"
-                                        value={this.state.name}
-                                        onChange={this.handleChange}
-                                        autocomplete={false}
-                                    />
-                                    <InputIcon
-                                        name="magic"
-                                        onClick={this.autofill}
-                                        disabled={!this.state.selected.length}
-                                    />
-                                </InputContainer>
-                                <InputError>{errorName}</InputError>
-                            </InputGroup>
-                            <InputGroup>
-                                <InputLabel>Locale</InputLabel>
-                                <Input name="locale" value={this.state.locale} onChange={this.handleChange} />
-                            </InputGroup>
-                            <InputGroup>
-                                <InputLabel>Isolate</InputLabel>
-                                <Input name="isolate" value={this.state.isolate} onChange={this.handleChange} />
-                            </InputGroup>
-                            <InputGroup>
-                                <InputLabel>Default Subtraction</InputLabel>
-                                <Select name="subtractionId" value={subtractionId} onChange={this.handleChange}>
-                                    {subtractionComponents}
-                                </Select>
-                                <InputError>{errorSubtraction}</InputError>
-                            </InputGroup>
+            <div>
+                <h1>Test</h1>
+            </div>
+            // <Modal
+            //     label="Create Sample"
+            //     show={this.props.show}
+            //     size="lg"
+            //     onEnter={this.props.onLoadSubtractionsAndFiles}
+            //     onExited={this.handleModalExited}
+            //     onHide={this.props.onHide}
+            // >
+            //     <ModalHeader>Create Sample</ModalHeader>
+            //     <form onSubmit={this.handleSubmit}>
+            //         <ModalBody>
+            //             <CreateSampleFields>
+            //                 <InputGroup>
+            //                     <InputLabel>Sample Name</InputLabel>
+            //                     <InputContainer align="right">
+            //                         <Input
+            //                             error={errorName}
+            //                             name="name"
+            //                             value={this.state.name}
+            //                             onChange={this.handleChange}
+            //                             autocomplete={false}
+            //                         />
+            //                         <InputIcon
+            //                             name="magic"
+            //                             onClick={this.autofill}
+            //                             disabled={!this.state.selected.length}
+            //                         />
+            //                     </InputContainer>
+            //                     <InputError>{errorName}</InputError>
+            //                 </InputGroup>
+            //                 <InputGroup>
+            //                     <InputLabel>Locale</InputLabel>
+            //                     <Input name="locale" value={this.state.locale} onChange={this.handleChange} />
+            //                 </InputGroup>
+            //                 <InputGroup>
+            //                     <InputLabel>Isolate</InputLabel>
+            //                     <Input name="isolate" value={this.state.isolate} onChange={this.handleChange} />
+            //                 </InputGroup>
+            //                 <InputGroup>
+            //                     <InputLabel>Default Subtraction</InputLabel>
+            //                     <Select name="subtractionId" value={subtractionId} onChange={this.handleChange}>
+            //                         {subtractionComponents}
+            //                     </Select>
+            //                     <InputError>{errorSubtraction}</InputError>
+            //                 </InputGroup>
 
-                            <InputGroup>
-                                <InputLabel>Host</InputLabel>
-                                <Input name="host" value={this.state.host} onChange={this.handleChange} />
-                            </InputGroup>
+            //                 <InputGroup>
+            //                     <InputLabel>Host</InputLabel>
+            //                     <Input name="host" value={this.state.host} onChange={this.handleChange} />
+            //                 </InputGroup>
 
-                            <InputGroup>
-                                <InputLabel>Pairedness</InputLabel>
-                                <Input value={pairedness} readOnly={true} />
-                            </InputGroup>
-                        </CreateSampleFields>
+            //                 <InputGroup>
+            //                     <InputLabel>Pairedness</InputLabel>
+            //                     <Input value={pairedness} readOnly={true} />
+            //                 </InputGroup>
+            //             </CreateSampleFields>
 
-                        <LibraryTypeSelector onSelect={this.handleLibrarySelect} libraryType={this.state.libraryType} />
+            //             <LibraryTypeSelector onSelect={this.handleLibrarySelect} libraryType={this.state.libraryType} />
 
-                        {userGroup}
+            //             {userGroup}
 
-                        <ReadSelector
-                            files={this.props.readyReads}
-                            selected={this.state.selected}
-                            onSelect={this.handleSelect}
-                            error={errorFile}
-                        />
-                    </ModalBody>
+            //             <ReadSelector
+            //                 files={this.props.readyReads}
+            //                 selected={this.state.selected}
+            //                 onSelect={this.handleSelect}
+            //                 error={errorFile}
+            //             />
+            //         </ModalBody>
 
-                    <ModalFooter>
-                        <SaveButton />
-                    </ModalFooter>
-                </form>
-            </Modal>
+            //         <ModalFooter>
+            //             <SaveButton />
+            //         </ModalFooter>
+            //     </form>
+            // </Modal>
         );
     }
 }

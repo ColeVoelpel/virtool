@@ -6,13 +6,14 @@ import { checkAdminOrPermission } from "../../utils/utils";
 import { clearSampleSelection, findSamples } from "../actions";
 import { SampleSelectionToolbar } from "./SelectionToolbar";
 import WorkflowFilter from "./WorkflowFilter";
+import { excludePaths } from "../../nav/utils";
 
 export const SampleSearchToolbar = ({ canCreate, nuvs, pathoscope, term, onFind }) => {
     let createButton;
 
     if (canCreate) {
         createButton = (
-            <LinkButton to={{ state: { createSample: true } }} color="blue" tip="Create">
+            <LinkButton to="samples/create" color="blue" tip="Create" isActive={excludePaths(["/samples/create"])}>
                 <Icon name="plus-square fa-fw" />
             </LinkButton>
         );
@@ -28,7 +29,6 @@ export const SampleSearchToolbar = ({ canCreate, nuvs, pathoscope, term, onFind 
                 />
                 {createButton}
             </Toolbar>
-
             <Box>
                 <WorkflowFilter />
             </Box>

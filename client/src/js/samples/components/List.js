@@ -103,8 +103,6 @@ export class SamplesList extends React.Component {
                         renderRow={this.renderRow}
                     />
                 )}
-
-                <CreateSample />
                 <QuickAnalysis />
             </div>
         );
