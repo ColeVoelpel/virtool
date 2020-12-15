@@ -206,9 +206,8 @@ async def get(req):
     },
     "files": {
         "type": "list",
-        "minlength": 1,
+        "minlength": 0,
         "maxlength": 2,
-        "required": True
     },
     "notes": {
         "type": "string",

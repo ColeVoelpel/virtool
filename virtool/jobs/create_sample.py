@@ -98,11 +98,13 @@ async def parse_fastqc(job):
     in the main run() method
 
     """
-    qc = await job.run_in_executor(
-        virtool.jobs.fastqc.parse_fastqc,
-        job.params["fastqc_path"],
-        job.params["temp_sample_path"]
-    )
+    qc = None
+    if job.params.files:
+        qc = await job.run_in_executor(
+            virtool.jobs.fastqc.parse_fastqc,
+            job.params["fastqc_path"],
+            job.params["temp_sample_path"]
+        )
 
     await job.db.samples.update_one({"_id": job.params["sample_id"]}, {
         "$set": {

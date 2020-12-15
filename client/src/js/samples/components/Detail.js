@@ -28,7 +28,7 @@ import Rights from "./Rights";
 
 const SampleDetail = ({ canModify, detail, error, history, match, onGetSample }) => {
     const sampleId = match.params.sampleId;
-
+    console.log(detail);
     useEffect(() => {
         onGetSample(sampleId);
     }, [sampleId]);

@@ -2,7 +2,7 @@ import { map, snakeCase } from "lodash-es";
 import React from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
-import { BoxGroup, BoxGroupHeader, Icon } from "../../../base";
+import { BoxGroup, BoxGroupHeader, Icon, NoneFoundBox } from "../../../base";
 import { replaceLegacyFiles } from "../../actions";
 import { getIsReadyToReplace } from "../../selectors";
 import SampleRawItem from "./RawItem";
@@ -17,9 +17,15 @@ const SampleFilesRawTitle = styled.h2`
 `;
 
 export const SampleFilesRaw = ({ id, files, isReadyToReplace, prefix, onReplace }) => {
-    const fileComponents = map(files, (file, index) => (
-        <SampleRawItem key={file.name} {...file} prefix={prefix} suffix={index + 1} />
-    ));
+    let fileComponents;
+    if(files){
+        fileComponents = map(files, (file, index) => (
+            <SampleRawItem key={file.name} {...file} prefix={prefix} suffix={index + 1} />
+        ));
+    }
+    else{
+        fileComponents = <NoneFoundBox noun="sequencing data" />;
+    }
 
     let replaceLink;
 
