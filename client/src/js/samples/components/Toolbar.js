@@ -13,7 +13,7 @@ export const SampleSearchToolbar = ({ canCreate, nuvs, pathoscope, term, onFind 
 
     if (canCreate) {
         createButton = (
-            <LinkButton to="samples/create" color="blue" tip="Create" isActive={excludePaths(["/samples/create"])}>
+            <LinkButton to="/samples/create" color="blue" tip="Create" >
                 <Icon name="plus-square fa-fw" />
             </LinkButton>
         );

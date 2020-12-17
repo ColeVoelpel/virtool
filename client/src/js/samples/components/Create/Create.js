@@ -4,8 +4,6 @@ import { connect } from "react-redux";
 import styled from "styled-components";
 import { pushState } from "../../../app/actions";
 import {
-    ModalBody,
-    ModalFooter,
     Input,
     InputContainer,
     InputError,
@@ -13,17 +11,15 @@ import {
     InputIcon,
     InputLabel,
     LoadingPlaceholder,
-    Modal,
     SaveButton,
     Select,
-    ModalHeader,
     ViewHeader,
     ViewHeaderTitle
 } from "../../../base";
 import { clearError } from "../../../errors/actions";
 import { shortlistSubtractions } from "../../../subtraction/actions";
 import { getSubtractionShortlist } from "../../../subtraction/selectors";
-import { getTargetChange, routerLocationHasState } from "../../../utils/utils";
+import { getTargetChange } from "../../../utils/utils";
 import { createSample, findReadFiles } from "../../actions";
 import { LibraryTypeSelector } from "./LibraryTypeSelector";
 import ReadSelector from "./ReadSelector";
@@ -69,16 +65,8 @@ export class CreateSample extends React.Component {
     }
 
     componentDidMount = () => {
-        this.props.onLoadSubtractionsAndFiles
+        this.props.onLoadSubtractionsAndFiles();
     };
-
-    // handleModalExited = () => {
-    //     this.setState(getInitialState(this.props));
-
-    //     if (this.props.error.length) {
-    //         this.props.onClearError();
-    //     }
-    // };
 
     handleChange = e => {
         const { name, value, error } = getTargetChange(e.target);
@@ -242,7 +230,7 @@ export const mapStateToProps = state => ({
     forceGroupChoice: state.settings.sample_group === "force_choice",
     groups: state.account.groups,
     readyReads: filter(state.samples.readFiles, { reserved: false }),
-    show: routerLocationHasState(state, "createSample"),
+    //show: routerLocationHasState(state, "createSample"),
     subtractions: getSubtractionShortlist(state)
 });
 

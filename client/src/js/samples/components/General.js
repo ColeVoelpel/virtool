@@ -118,21 +118,32 @@ export const SampleDetailGeneral = ({
 
 export const mapStateToProps = state => {
     const { name, host, isolate, locale, paired, quality, library_type, subtraction } = state.samples.detail;
-    const { count, encoding, gc, length } = quality;
-
-    return {
-        encoding,
-        host,
-        isolate,
-        locale,
-        name,
-        paired,
-        count: numbro(count).format("0.0 a"),
-        gc: numbro(gc / 100).format("0.0 %"),
-        libraryType: getLibraryTypeDisplayName(library_type),
-        lengthRange: length.join(" - "),
-        subtraction
-    };
+    if(quality){
+        const { count, encoding, gc, length } = quality;
+        return {
+            encoding,
+            host,
+            isolate,
+            locale,
+            name,
+            paired,
+            count: numbro(count).format("0.0 a"),
+            gc: numbro(gc / 100).format("0.0 %"),
+            libraryType: getLibraryTypeDisplayName(library_type),
+            lengthRange: length.join(" - "),
+            subtraction
+        };
+    } else {
+        return {
+            host,
+            isolate,
+            locale,
+            name,
+            paired,
+            libraryType: getLibraryTypeDisplayName(library_type),
+            subtraction
+        };
+    }
 };
 
 export default connect(mapStateToProps)(SampleDetailGeneral);

@@ -21,13 +21,23 @@ export const SampleQuality = props => (
 );
 
 const mapStateToProps = state => {
-    const { bases, composition, sequences } = state.samples.detail.quality;
+        if(state.samples.detail.quality){
+            const { bases, composition, sequences } = state.samples.detail.quality;
 
-    return {
-        bases,
-        composition,
-        sequences
+            return {
+                bases,
+                composition,
+                sequences
+            };
+        }
+        else{
+            return {
+                bases: null,
+                composition: null,
+                sequences: null
+            }
+        }
     };
-};
+
 
 export default connect(mapStateToProps)(SampleQuality);

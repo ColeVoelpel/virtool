@@ -6,6 +6,7 @@ import { QualityChart } from "./Chart";
 import { drawBasesChart } from "./Bases";
 import { drawNucleotidesChart } from "./Nucleotides";
 import { drawSequencesChart } from "./Sequences";
+import { NoneFoundBox } from "../../base";
 
 const QualityTitle = styled.h5`
     display: flex;
@@ -18,7 +19,7 @@ export const Quality = ({ bases, composition, sequences }) => {
 
     return (
         <div ref={ref}>
-            {width && (
+            {width && bases && composition && sequences ? (
                 <React.Fragment>
                     <QualityTitle>
                         <strong>Quality Distribution at Read Positions</strong>
@@ -35,7 +36,8 @@ export const Quality = ({ bases, composition, sequences }) => {
                     </QualityTitle>
                     <QualityChart createChart={drawSequencesChart} data={sequences} width={width} />
                 </React.Fragment>
-            )}
+            ):
+            <NoneFoundBox noun="sequencing data" />}
         </div>
     );
 };
